@@ -30,17 +30,14 @@ public class Card {
 
     // Constructor vacío
 
-
-    public Card(CardType cardType, String cardNumber, int cvv, String cardHolder, LocalDate fromDate, LocalDateTime thruDate, CardColor cardColor, LocalDateTime expiret) {
+    public Card() {
     }
 
-    public Card(CardColor gold) {
-    }
 
     // Constructor con parámetros
 
 
-    public Card() {
+    public Card(CardColor silver) {
     }
 
     public Card(Long id, String cardHolder, CardType type, CardColor color, String number, int cvv, LocalDate fromDate, LocalDateTime thruDate) {
@@ -55,6 +52,19 @@ public class Card {
 
 
     }
+    public Card(CardType cardType, String cardNumber, int cvv, String cardHolder, LocalDate fromDate, LocalDateTime thruDate, CardColor cardColor) {
+        this.type = cardType;
+        this.number = cardNumber;
+        this.cvv = cvv;
+        this.cardHolder = cardHolder;
+        this.fromDate = fromDate;
+        this.thruDate = thruDate;
+        this.color = cardColor;
+    }
+
+
+
+
 
     // Getters y setters para cada atributo de la clase
     public Long getId() {

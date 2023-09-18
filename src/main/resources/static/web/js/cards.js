@@ -58,7 +58,9 @@ Vue.createApp({
               showConfirmButton: false,
               timer: 1500,
             });
-            window.location.reload(); // Agregar esta línea para actualizar la página
+            console.log("hola");
+            this.getData();
+           // window.location.reload(); // Agregar esta línea para actualizar la página
           }).then(() => this.getData());
         }
       });

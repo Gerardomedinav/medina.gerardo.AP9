@@ -16,4 +16,6 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 
     Card getCardById(long id);
 
+
+
 }

@@ -3,6 +3,7 @@ package com.mindhub.homebanking.controllers;
 import com.mindhub.homebanking.Utils.CardUtils;
 import com.mindhub.homebanking.dtos.CardDTO;
 import com.mindhub.homebanking.models.*;
+import com.mindhub.homebanking.repositories.CardRepository;
 import com.mindhub.homebanking.services.CardService;
 import com.mindhub.homebanking.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +20,18 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 public class CardController {
 
-    public CardType cardtype;
-    public CardColor cardColor;
-
-
 
     @Autowired
     public CardService cardService;
 
     @Autowired
     public ClientService clientService;
+    @Autowired
+    public CardRepository cardRepository;
 
     @PostMapping("/clients/current/cards")
     public ResponseEntity<Object> createCard(Authentication authentication, @RequestParam CardType cardType,
-                                             @RequestParam CardColor cardColor, LocalDateTime expiret) {
+                                             @RequestParam CardColor cardColor) {
        /* try { } catch { } permite capturar y manejar excepciones que puedan ocurrir
        durante la ejecución de un bloque de código, evitando que el programa se detenga abruptamente y permitiendo tomar acciones específicas en caso de que ocurra una excepción.*/
         try {
@@ -83,10 +82,14 @@ public class CardController {
                 LocalDate fromDate = LocalDate.now();
                 LocalDateTime thruDate = LocalDateTime.now().plusYears(5);
 
+
                 // Crear la nueva tarjeta y guardarla en la base de datos
-                Card card = new Card(cardType, cardNumber, cvv, cardHolder, fromDate, thruDate, cardColor, expiret);
+                Card card = new Card(cardType,cardNumber,cvv,cardHolder,fromDate,thruDate,cardColor);
                 card.setClient(client);
+
+
                 cardService.save(card);
+                System.out.println("Nuevo objeto Card: " + card);
 
                 // Retornar una respuesta exitosa
                 return new ResponseEntity<>(HttpStatus.CREATED);
@@ -132,14 +135,21 @@ public class CardController {
         // Obtiene el cliente actual de la base de datos.
         Client current = clientService.getClientByEmail(authentication.getName());
 
-        // Obtiene la tarjeta de la base de datos.
-        Card card = cardService.getCardById(id);
+
 
         // Comprueba si el id de la tarjeta es inválido.
         if (id == 0 ){
             // Devuelve un mensaje de error.
             return new ResponseEntity<>("Esta tarjeta no existe",HttpStatus.FORBIDDEN);
         }
+            // Obtiene la tarjeta de la base de datos.
+            Card card = cardService.getCardById(id);
+        if(card == null){
+            // Devuelve un mensaje de error.
+            return new ResponseEntity<>("Esta tarjeta no existe",HttpStatus.FORBIDDEN);
+
+        }
+
 
         // Comprueba si el cliente actual tiene autorización para eliminar la tarjeta.
         if(current == null){

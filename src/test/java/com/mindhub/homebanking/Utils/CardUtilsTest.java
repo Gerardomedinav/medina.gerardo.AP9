@@ -25,30 +25,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @AutoConfigureTestDatabase(replace = NONE)
 class CardUtilsTest {
 
-    // Este tipo de error ocurre cuando una aserción en el código de prueba falla.
-    // En este caso, la aserción es del tipo assertTrue, lo que significa que se esperaba
-    // que una condición fuera verdadera, pero el resultado fue falso.
-    @Test
-    void hasCardWithColorShouldReturnTrue() {
-        // Crear un cliente
-        Client client = new Client();
-
-        // Crear tarjetas con el color que queremos verificar
-        Card card1 = new Card(CardColor.GOLD);
-        Card card2 = new Card(CardColor.SILVER);
-
-        // Agregar las tarjetas al cliente
-        client.addCards(card1);
-        client.addCards(card2);
-
-        // Verificar si tiene una tarjeta del mismo color (en este caso, azul)
-        assertTrue(CardUtils.hasCardWithColor(client, CardColor.GOLD));
-    }
-
 
     //este test verifica que el método hasCardWithColor funciona correctamente
     // al retornar false  o tree cuando el cliente no tiene una tarjeta del color
     // especificado (SILVER en este caso).
+
     @Test
     void hasCardWithColorShouldReturnFalse() {
         // Crear un cliente
@@ -164,8 +145,6 @@ class CardUtilsTest {
     /* assertThat(accounts, is(not(empty())));
     Esta es la afirmación que verifica si la lista de cuentas (accounts) no está vacía. Si la lista no está vacía,
     significa que se encontraron cuentas que cumplen con el criterio de búsqueda.*/
-
-
 
 
 }

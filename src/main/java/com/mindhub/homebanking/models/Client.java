@@ -116,10 +116,6 @@ public class Client {
         this.cards = cards;
     }
 
-
-
-
-
     public void addCards(Card card){
         card.setClient(this);
         cards.add(card);

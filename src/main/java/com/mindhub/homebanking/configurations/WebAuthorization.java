@@ -21,6 +21,7 @@ class WebAuthorization extends WebSecurityConfigurerAdapter {
         // Si quiero acceder con ("/web/index.html", "SIN ROL") puedo hacerlo, pero
         // si cambio el orden y pongo esta regla primero '.antMatchers("/**").hasAuthority("CLIENT")'
         // me va a rechazar la autorización, por que analiza primero esa linea.
+        /*
         http.authorizeRequests()
                 .antMatchers("/web/index.html","/web/css/**","/web/img/**","/web/js/**","/api/loans").permitAll()//
                 .antMatchers(HttpMethod.POST, "/api/login","/api/logout","/api/clients").permitAll()
@@ -35,7 +36,9 @@ class WebAuthorization extends WebSecurityConfigurerAdapter {
 
 
                 .anyRequest().denyAll();
-       /* http.authorizeRequests()
+                */
+
+        http.authorizeRequests()
                 .antMatchers("/web/index.html", "/web/css/**", "/web/img/**", "/web/js/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/login").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
@@ -65,7 +68,7 @@ class WebAuthorization extends WebSecurityConfigurerAdapter {
                .antMatchers("/**").hasAnyAuthority("ADMIN")
                // .antMatchers("/**").hasAuthority("ADMIN");
                 .anyRequest().denyAll();
-*/
+
 
         // Define un recurso POST para hacer el login
         http.formLogin()

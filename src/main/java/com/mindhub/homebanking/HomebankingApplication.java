@@ -21,7 +21,7 @@ public class HomebankingApplication {
 	{
 		SpringApplication.run(HomebankingApplication.class, args); // Ejecuta la aplicación llamando al método "run" de la clase "SpringApplication"
 	}
-	/*
+
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
@@ -111,7 +111,7 @@ public class HomebankingApplication {
 
 		};
 	}
-*/
+
 }
 	/* El código crea una aplicación Spring Boot que inicializa una base de datos y guarda algunos objetos
 	(clientes, cuentas bancarias, transacciones y préstamos) en ella. El método initData() se ejecuta al
