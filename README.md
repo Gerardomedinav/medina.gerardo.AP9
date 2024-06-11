@@ -1,6 +1,6 @@
 # Aplicación Web de Home Banking
 
-![Imagen de una aplicación de home banking](C:\Users\USUARIO\IdeaProjects\homebanking\src\main\resources\static\web\img\homebanking_index.png)
+![Imagen de una aplicación de home banking](src/main/resources/static/web/img/home_banking_img.jpg)
 
 El desarrollo de una aplicación web de home banking es un proyecto complejo y multifacético que abarca desde la identificación de problemas y objetivos hasta la implementación de soluciones técnicas y la recopilación de datos. A lo largo de este proyecto, se han abordado aspectos cruciales como la planificación de tareas con diagramas de Gantt, la clasificación de requerimientos funcionales y no funcionales, y la elección del ciclo de vida del software, incluyendo un enfoque orientado a objetos.
 El análisis de proyectos similares y el diseño del muestreo han sido fundamentales para garantizar que la aplicación cumpla con las necesidades y expectativas de los usuarios. Además, la implementación de funcionalidades detalladas, como el sistema de login, la gestión de cuentas, y los roles y validaciones, asegura una experiencia de usuario segura y eficiente.
@@ -38,3 +38,4 @@ Las dependencias necesarias para este proyecto incluyen:
 - `spring-boot-starter-test`: Proporciona herramientas de pruebas unitarias y de integración.
 
 Estas dependencias se pueden configurar en el archivo `build.gradle` o `pom.xml` del proyecto, dependiendo de si se está utilizando Gradle o Maven.
+
